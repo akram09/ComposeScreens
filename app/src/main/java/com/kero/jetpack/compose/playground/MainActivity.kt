@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.compose.Composable
+import androidx.compose.Composer
 import androidx.ui.core.Text
 import androidx.ui.core.setContent
 import androidx.ui.layout.Column
@@ -18,12 +19,13 @@ class MainActivity : AppCompatActivity() {
             firstView()
         }
     }
+    @Preview
     @Composable
     fun firstView(){
         Log.e("errr", "entered")
         MaterialTheme {
             ModalDrawerLayout(DrawerState.Opened , {
-                Log.e("errr", "changed")
+                Log.e("errr", "chang ed")
             }, drawerContent = {
                 Text("Hello World ")
             }, bodyContent = {
