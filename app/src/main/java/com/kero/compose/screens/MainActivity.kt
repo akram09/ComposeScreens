@@ -19,33 +19,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent{
-
+            Dashboard()
         }
     }
-    @Preview
-    @Composable
-    fun MainContainer(){
 
-        val texts = listOf("one", "two", "three", "four", "five", "six", "seven")
-        MaterialTheme() {
-            Surface() {
-                VerticalScroller() {
-                    Column() {
-                        texts.forEach {
-                            Row() {
-                                texts.forEach {
-                                    Text(text = it)
-                                }
-                            }
-                        }
-
-                    }
-                }
-            }
-
-        }
-
-    }
 }
