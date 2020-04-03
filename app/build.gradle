@@ -7,7 +7,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.kero.jetpack.compose.playground"
+        applicationId "com.kero.compose.screens"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
