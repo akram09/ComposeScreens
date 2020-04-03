@@ -14,14 +14,14 @@ import androidx.ui.layout.Row
 import androidx.ui.material.*
 import androidx.ui.tooling.preview.Preview
 import com.kero.compose.screens.screens.Dashboard
+import com.kero.compose.screens.screens.getPlaces
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent{
-            Dashboard()
+            Dashboard(places = getPlaces(resources = resources))
         }
     }
-
 }
