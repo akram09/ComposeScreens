@@ -8,13 +8,7 @@ A collections of Beautiful and modern's Ui  built with Android Jetpack Compose, 
 
 for the moment the project is under developement and have only one screen working on :
 
-## TravelScreen
-
-| Travel App > Dashboard |
-
-| --------------------------------| 
-
-<img src="./art/traverlpage.jpg" height="400" alt="Screenshot"/>
-
-
+| TravelScreen Dashboard                                       |
+| ------------------------------------------------------------ |
+| <img src="https://github.com/akram09/ComposeScreens/blob/master/art/travelpage.jpg" width="200" height="400"/> |
 
