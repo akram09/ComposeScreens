@@ -10,5 +10,5 @@ for the moment the project is under developement and have only one screen workin
 
 | TravelScreen Dashboard                                       |
 | ------------------------------------------------------------ |
-| <img src="https://github.com/akram09/ComposeScreens/blob/master/art/travelpage.jpg" width="200" height="400"/> |
+| <img src="https://github.com/akram09/ComposeScreens/blob/master/art/travelpage.jpg" width="250" height="400"/> |
 

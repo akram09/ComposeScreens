@@ -1,4 +1,4 @@
-package com.kero.compose.screens.component
+package com.kero.compose.screens.base
 
 import android.os.Build
 import androidx.annotation.RequiresApi

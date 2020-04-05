@@ -7,26 +7,22 @@ import androidx.ui.core.clip
 import androidx.ui.foundation.*
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.ScaleFit
 import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.*
 import androidx.ui.material.icons.outlined.Menu
 import androidx.ui.material.icons.outlined.Notifications
-import androidx.ui.res.imageResource
 import androidx.ui.res.vectorResource
-import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
-import com.kero.compose.screens.component.Crop
+import com.kero.compose.screens.base.Crop
 import com.kero.jetpack.compose.playground.R
-
 
 @Composable
 fun Dashboard(places:List<Place>){
-    MaterialTheme {
+    AppTheme {
         Scaffold(bottomAppBar = { bottomNavigation()} , topAppBar = { topActionBar()}) {
-            MainContainer(places = places , modifier = Modifier.padding(start = 20.dp))
+            MainContainer(places = places , modifier = it.padding(start = 20.dp))
         }
 
     }
@@ -36,12 +32,12 @@ fun Dashboard(places:List<Place>){
 
 @Composable
 fun MainContainer(modifier: Modifier= Modifier.None , places: List<Place>){
-    VerticalScroller(modifier = Modifier.padding(bottom = 56.dp)) {
-        Column(modifier = modifier) {
+    VerticalScroller(modifier = modifier) {
+        Column() {
             SearchPlace()
-            Spacer(modifier = modifier.preferredHeight(20.dp))
+            Spacer(modifier = Modifier.preferredHeight(20.dp))
             PlacesCards(places = places)
-            Spacer(modifier = modifier.preferredHeight(10.dp))
+            Spacer(modifier = Modifier.preferredHeight(10.dp))
             PlacesList(places = places)
         }
     }
@@ -50,12 +46,12 @@ fun MainContainer(modifier: Modifier= Modifier.None , places: List<Place>){
 
 @Composable
 fun SearchPlace(modifier: Modifier= Modifier.None){
-    Column(modifier = modifier.fillMaxWidth().padding(end = 10.dp)) {
+    Column(modifier = modifier.fillMaxWidth().padding(end = 30.dp)) {
         Text(text = "Where are you \n going?" , style = MaterialTheme.typography.h4)
         Spacer(modifier = Modifier.preferredHeight(30.dp))
-        Box(shape = RoundedCornerShape(4.dp) , backgroundColor = Color.LightGray , modifier = Modifier.preferredHeight(40.dp) ,gravity = ContentGravity.Center ){
+        Box(shape = RoundedCornerShape(4.dp) , backgroundColor = Color(0xFFE8ECEE) , modifier = Modifier.preferredHeight(45.dp) ,gravity = ContentGravity.Center ){
             Row(modifier = Modifier.padding(5.dp)) {
-                Icon(asset = Icons.Filled.Room,tint = Color.DarkGray,modifier = Modifier.padding(end = 7.dp))
+                Icon(asset = Icons.Filled.Room,tint = MaterialTheme.colors.onPrimary,modifier = Modifier.padding(end = 7.dp))
                 Text(text = "E.g: New York, United States")
                 Spacer(modifier = Modifier.weight(1f))
             }
@@ -123,7 +119,7 @@ fun TravelPlaceCard(place:Place ,  modifier: Modifier = Modifier.None){
             Text(text = place.name , style = MaterialTheme.typography.subtitle1 , modifier = Modifier.fillMaxWidth(), maxLines = 2 )
         }
         ProvideEmphasis(emphasis = emphasisLevels.medium) {
-            Text(text = place.location , style = MaterialTheme.typography.subtitle2 )
+            Text(text = place.location , style = MaterialTheme.typography.subtitle2  )
         }
         
     }
@@ -143,29 +139,14 @@ fun bottomNavigation(modifier:Modifier = Modifier.None, onItemSelected : (index:
     BottomNavigation(modifier = modifier, color = MaterialTheme.colors.surface) {
         icons.forEachIndexed { index, icon ->
             BottomNavigationItem(icon = {
-                Icon(asset = icon , tint = Color.DarkGray)
+                Icon(asset = icon )
             },selected = index ==selectedItem
                 , onSelected = {
                     selectedItem = index
                     onItemSelected(index)
-                })
+                }, activeColor = Color.DarkGray , inactiveColor = MaterialTheme.colors.onPrimary)
         }
     }
 }
 
-
-@Composable
-fun topActionBar(modifier: Modifier = Modifier.None , onMenuClicked:()->Unit = {} , onNotificationClicked:()->Unit= {}){
-    Surface(modifier = modifier.preferredHeight( 56.dp)) {
-        Row(modifier = Modifier.fillMaxHeight().fillMaxWidth()) {
-            IconButton(  onClick = onMenuClicked) {
-                Icon(asset = Icons.Outlined.Menu)
-            }
-            Spacer(modifier = Modifier.weight(1f))
-            IconButton(onClick = onNotificationClicked) {
-                Icon(asset = Icons.Outlined.Notifications)
-            }
-        }
-    }
-}
 
