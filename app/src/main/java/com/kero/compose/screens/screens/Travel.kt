@@ -18,6 +18,7 @@ import androidx.ui.res.imageResource
 import androidx.ui.res.vectorResource
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
+import com.kero.compose.screens.component.Crop
 import com.kero.jetpack.compose.playground.R
 
 
@@ -75,7 +76,7 @@ fun PlacesList(places: List<Place>, modifier: Modifier = Modifier.None){
 fun PlaceItem(modifier: Modifier= Modifier.None , place:Place){
     Row(modifier = modifier.fillMaxWidth().padding(bottom = 10.dp)) {
         val imageModifier = Modifier.preferredSize(70.dp).clip(RoundedCornerShape(6.dp))
-        Image(asset = place.image,modifier = imageModifier , scaleFit = ScaleFit.FillWidth )
+        Image(asset = place.image,modifier = imageModifier , scaleFit = Crop )
         Spacer(modifier = Modifier.preferredWidth(10.dp))
         Column(modifier = Modifier.weight(1f)) {
             val emphasisLevels = EmphasisAmbient.current
@@ -115,7 +116,7 @@ fun PlacesCards(modifier: Modifier= Modifier.None, places:List<Place> ){
 fun TravelPlaceCard(place:Place ,  modifier: Modifier = Modifier.None){
     Column (modifier = modifier.preferredWidthIn(maxWidth = 150.dp)){
         val imageModifier = Modifier.preferredHeight(180.dp).preferredWidth(150.dp).clip(RoundedCornerShape(4.dp))
-        Image(asset = place.image , modifier = imageModifier , scaleFit = ScaleFit.FillWidth)
+        Image(asset = place.image , modifier = imageModifier , scaleFit = Crop)
         Spacer(modifier = Modifier.preferredHeight(3.dp))
         val emphasisLevels = EmphasisAmbient.current
         ProvideEmphasis(emphasis = emphasisLevels.high) {
