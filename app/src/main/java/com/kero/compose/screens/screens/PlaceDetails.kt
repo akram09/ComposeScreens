@@ -5,10 +5,7 @@ import androidx.compose.Composable
 import androidx.ui.core.Modifier
 import androidx.ui.core.clip
 import androidx.ui.core.tag
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.Icon
-import androidx.ui.foundation.Image
-import androidx.ui.foundation.Text
+import androidx.ui.foundation.*
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.geometry.Offset
 import androidx.ui.graphics.Color
@@ -37,18 +34,20 @@ fun PlaceDetail(place: Place){
 @Composable
 fun mainContainer(modifier: Modifier = Modifier.None,place:Place){
     Surface(modifier = modifier) {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Box(modifier = Modifier.fillMaxWidth().preferredHeight(250.dp)){
-                Image(asset = place.image , scaleFit = Crop, modifier = Modifier.fillMaxSize().clip(
-                    RoundedCornerShape(10.dp)))
+        VerticalScroller(modifier = Modifier.fillMaxSize()) {
+            Column() {
+                Box(modifier = Modifier.fillMaxWidth().preferredHeight(250.dp)){
+                    Image(asset = place.image , scaleFit = Crop, modifier = Modifier.fillMaxSize().clip(
+                        RoundedCornerShape(10.dp)))
+                }
+                Spacer(modifier = Modifier.preferredHeight(20.dp))
+                PlaceDetailHeader(placeTitle = place.name ,placeLocation =  place.location ,placePrice =  place.priceForNight)
+                Spacer(modifier = Modifier.preferredHeight(20.dp))
+                PlaceDetailContent(placeDetail = place.detail )
+                Spacer(modifier = Modifier.preferredHeight(60.dp))
+
             }
-            Spacer(modifier = Modifier.preferredHeight(20.dp))
-            PlaceDetailHeader(placeTitle = place.name ,placeLocation =  place.location ,placePrice =  place.priceForNight)
-            Spacer(modifier = Modifier.preferredHeight(20.dp))
-            PlaceDetailContent(placeDetail = place.detail)
-
         }
-
     }
 }
 @Composable
@@ -72,7 +71,7 @@ fun PlaceDetailHeader(modifier: Modifier = Modifier.None , placeTitle :String , 
 
         Spacer(modifier = Modifier.preferredHeight(10.dp))
         ProvideEmphasis(emphasis = emphasisLevels.high) {
-            Text(text = "$${placePrice.toInt()}/night" , style = MaterialTheme.typography.subtitle2)
+            Text(text = "$${placePrice.toInt()}/night" , style = MaterialTheme.typography.h6)
         }
 
     }

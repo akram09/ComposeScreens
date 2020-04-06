@@ -118,7 +118,7 @@ fun PlacesCards(modifier: Modifier= Modifier.None, places:List<Place> ){
 fun TravelPlaceCard(place:Place ,  modifier: Modifier = Modifier.None){
     Clickable(onClick = { navigateTo(Screen.PlaceDetailScreen(place))} , modifier = modifier.preferredWidthIn(maxWidth = 150.dp).ripple()) {
         Column (){
-            val imageModifier = Modifier.preferredHeight(180.dp).preferredWidth(150.dp).clip(RoundedCornerShape(4.dp))
+            val imageModifier = Modifier.preferredHeight(180.dp).preferredWidth(150.dp).clip(RoundedCornerShape(12.dp))
             Image(asset = place.image , modifier = imageModifier , scaleFit = Crop)
             Spacer(modifier = Modifier.preferredHeight(3.dp))
             val emphasisLevels = EmphasisAmbient.current

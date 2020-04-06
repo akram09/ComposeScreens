@@ -46,6 +46,13 @@ fun  getPlaces(resources:Resources) = listOf(
                 "Nulla porttitor accumsan tincidunt. Donec rutrum " +
                 " congue leo eget malesuada. " +
                 " Praesent sapien massa, convallis a pellentesque " +
+                " nec, egestas non nisi. Donec rutrum congue leo eget malesuada.\n \n" +
+                "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. " +
+                "Sed porttitor lectus nibh. Donec sollicitudin molestie malesuada. " +
+                "Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. \n" +
+                "Nulla porttitor accumsan tincidunt. Donec rutrum " +
+                " congue leo eget malesuada. \n" +
+                " Praesent sapien massa, convallis a pellentesque " +
                 " nec, egestas non nisi. Donec rutrum congue leo eget malesuada. " +
                 "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. " +
                 "Sed porttitor lectus nibh. Donec sollicitudin molestie malesuada. " +
