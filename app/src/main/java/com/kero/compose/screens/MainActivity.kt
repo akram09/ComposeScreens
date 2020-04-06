@@ -2,26 +2,31 @@ package com.kero.compose.screens
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.compose.Composable
-import androidx.compose.Composer
-import androidx.ui.core.Modifier
+import androidx.compose.state
+import androidx.ui.animation.Crossfade
 import androidx.ui.core.setContent
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.VerticalScroller
-import androidx.ui.layout.Column
-import androidx.ui.layout.Row
-import androidx.ui.material.*
-import androidx.ui.tooling.preview.Preview
-import com.kero.compose.screens.screens.Dashboard
-import com.kero.compose.screens.screens.getPlaces
+import com.kero.compose.screens.screens.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent{
-            Dashboard(places = getPlaces(resources = resources))
+            Crossfade(current =AppStatus.currentScreen ) {
+                when(it){
+                    is Screen.DashboardScreen -> Dashboard(places = getPlaces(resources))
+                    is Screen.PlaceDetailScreen -> PlaceDetail(place = it.place)
+                }
+            }
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (AppStatus.currentScreen is Screen.PlaceDetailScreen){
+            navigateTo(Screen.DashboardScreen)
+        }else{
+            finish()
         }
     }
 }

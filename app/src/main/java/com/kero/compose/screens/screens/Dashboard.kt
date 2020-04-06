@@ -13,15 +13,16 @@ import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.*
 import androidx.ui.material.icons.outlined.Menu
 import androidx.ui.material.icons.outlined.Notifications
+import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
 import androidx.ui.unit.dp
 import com.kero.compose.screens.base.Crop
 import com.kero.jetpack.compose.playground.R
 
 @Composable
-fun Dashboard(places:List<Place>){
+fun Dashboard(places:List<Place> ){
     AppTheme {
-        Scaffold(bottomAppBar = { bottomNavigation()} , topAppBar = { topActionBar()}) {
+        Scaffold(bottomAppBar = { bottomNavigation()} , topAppBar = { topActionBar(navigationIcon = Icons.Filled.Menu)}) {
             MainContainer(places = places , modifier = it.padding(start = 20.dp))
         }
 
@@ -31,12 +32,12 @@ fun Dashboard(places:List<Place>){
 
 
 @Composable
-fun MainContainer(modifier: Modifier= Modifier.None , places: List<Place>){
+fun MainContainer(modifier: Modifier= Modifier.None , places: List<Place> ){
     VerticalScroller(modifier = modifier) {
         Column() {
             SearchPlace()
             Spacer(modifier = Modifier.preferredHeight(20.dp))
-            PlacesCards(places = places)
+            PlacesCards(places = places )
             Spacer(modifier = Modifier.preferredHeight(10.dp))
             PlacesList(places = places)
         }
@@ -59,7 +60,7 @@ fun SearchPlace(modifier: Modifier= Modifier.None){
     }
 }
 @Composable
-fun PlacesList(places: List<Place>, modifier: Modifier = Modifier.None){
+fun PlacesList(places: List<Place>, modifier: Modifier = Modifier.None ){
     Column(modifier = modifier) {
         places.forEach {
             PlaceItem(place = it)
@@ -70,25 +71,30 @@ fun PlacesList(places: List<Place>, modifier: Modifier = Modifier.None){
 
 @Composable
 fun PlaceItem(modifier: Modifier= Modifier.None , place:Place){
-    Row(modifier = modifier.fillMaxWidth().padding(bottom = 10.dp)) {
-        val imageModifier = Modifier.preferredSize(70.dp).clip(RoundedCornerShape(6.dp))
-        Image(asset = place.image,modifier = imageModifier , scaleFit = Crop )
-        Spacer(modifier = Modifier.preferredWidth(10.dp))
-        Column(modifier = Modifier.weight(1f)) {
-            val emphasisLevels = EmphasisAmbient.current
-            ProvideEmphasis(emphasis = emphasisLevels.high) {
-                Text(text = place.name , style = MaterialTheme.typography.subtitle2 , modifier = Modifier.fillMaxWidth(), maxLines = 2 )
-            }
-            Spacer(modifier = Modifier.preferredHeight(2.dp))
-            ProvideEmphasis(emphasis = emphasisLevels.medium) {
-                Text(text = place.location , style = MaterialTheme.typography.subtitle1 )
-            }
-            Spacer(modifier = Modifier.preferredHeight(3.dp))
-            ProvideEmphasis(emphasis = emphasisLevels.high) {
-                Text(text ="${place.priceForNight.toInt()}/night" , style = MaterialTheme.typography.subtitle2 )
+    Clickable(onClick = {
+        navigateTo(Screen.PlaceDetailScreen(place))
+    } , modifier = modifier.fillMaxWidth().padding(bottom = 10.dp).ripple()) {
+        Row() {
+            val imageModifier = Modifier.preferredSize(70.dp).clip(RoundedCornerShape(6.dp))
+            Image(asset = place.image,modifier = imageModifier , scaleFit = Crop )
+            Spacer(modifier = Modifier.preferredWidth(10.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                val emphasisLevels = EmphasisAmbient.current
+                ProvideEmphasis(emphasis = emphasisLevels.high) {
+                    Text(text = place.name , style = MaterialTheme.typography.subtitle2 , modifier = Modifier.fillMaxWidth(), maxLines = 2 )
+                }
+                Spacer(modifier = Modifier.preferredHeight(2.dp))
+                ProvideEmphasis(emphasis = emphasisLevels.medium) {
+                    Text(text = place.location , style = MaterialTheme.typography.subtitle1 )
+                }
+                Spacer(modifier = Modifier.preferredHeight(3.dp))
+                ProvideEmphasis(emphasis = emphasisLevels.high) {
+                    Text(text ="${place.priceForNight.toInt()}/night" , style = MaterialTheme.typography.subtitle2 )
+                }
             }
         }
     }
+
 }
 
 
@@ -110,19 +116,22 @@ fun PlacesCards(modifier: Modifier= Modifier.None, places:List<Place> ){
 
 @Composable
 fun TravelPlaceCard(place:Place ,  modifier: Modifier = Modifier.None){
-    Column (modifier = modifier.preferredWidthIn(maxWidth = 150.dp)){
-        val imageModifier = Modifier.preferredHeight(180.dp).preferredWidth(150.dp).clip(RoundedCornerShape(4.dp))
-        Image(asset = place.image , modifier = imageModifier , scaleFit = Crop)
-        Spacer(modifier = Modifier.preferredHeight(3.dp))
-        val emphasisLevels = EmphasisAmbient.current
-        ProvideEmphasis(emphasis = emphasisLevels.high) {
-            Text(text = place.name , style = MaterialTheme.typography.subtitle1 , modifier = Modifier.fillMaxWidth(), maxLines = 2 )
+    Clickable(onClick = { navigateTo(Screen.PlaceDetailScreen(place))} , modifier = modifier.preferredWidthIn(maxWidth = 150.dp).ripple()) {
+        Column (){
+            val imageModifier = Modifier.preferredHeight(180.dp).preferredWidth(150.dp).clip(RoundedCornerShape(4.dp))
+            Image(asset = place.image , modifier = imageModifier , scaleFit = Crop)
+            Spacer(modifier = Modifier.preferredHeight(3.dp))
+            val emphasisLevels = EmphasisAmbient.current
+            ProvideEmphasis(emphasis = emphasisLevels.high) {
+                Text(text = place.name , style = MaterialTheme.typography.subtitle1 , modifier = Modifier.fillMaxWidth(), maxLines = 2 )
+            }
+            ProvideEmphasis(emphasis = emphasisLevels.medium) {
+                Text(text = place.location , style = MaterialTheme.typography.subtitle2  )
+            }
+
         }
-        ProvideEmphasis(emphasis = emphasisLevels.medium) {
-            Text(text = place.location , style = MaterialTheme.typography.subtitle2  )
-        }
-        
     }
+
 }
 
 
