@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        
+
         if (AppStatus.currentScreen is Screen.PlaceDetailScreen){
             navigateTo(Screen.DashboardScreen)
         }else{

@@ -54,6 +54,7 @@ fun mainContainer(modifier: Modifier = Modifier.None,place:Place){
 @Composable
 fun PlaceDetailHeader(modifier: Modifier = Modifier.None , placeTitle :String , placeLocation:String , placePrice:Double){
     Column() {
+        val emphasisLevels = EmphasisAmbient.current
         Row() {
             Text(text = placeTitle , style = MaterialTheme.typography.h6 )
             Spacer(modifier = Modifier.weight(1f))
@@ -63,10 +64,17 @@ fun PlaceDetailHeader(modifier: Modifier = Modifier.None , placeTitle :String , 
         Row() {
             Icon(asset = Icons.Filled.Room)
             Spacer(modifier = Modifier.preferredWidth(2.dp))
-            Text(text = placeLocation , style = MaterialTheme.typography.subtitle2)
+            ProvideEmphasis(emphasis = emphasisLevels.medium) {
+                Text(text = placeLocation , style = MaterialTheme.typography.subtitle1)
+            }
+
         }
+
         Spacer(modifier = Modifier.preferredHeight(10.dp))
-        Text(text = "${placePrice.toInt()}/days" , style = MaterialTheme.typography.subtitle1)
+        ProvideEmphasis(emphasis = emphasisLevels.high) {
+            Text(text = "$${placePrice.toInt()}/night" , style = MaterialTheme.typography.subtitle2)
+        }
+
     }
 }
 @Composable

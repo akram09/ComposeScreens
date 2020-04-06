@@ -89,7 +89,7 @@ fun PlaceItem(modifier: Modifier= Modifier.None , place:Place){
                 }
                 Spacer(modifier = Modifier.preferredHeight(3.dp))
                 ProvideEmphasis(emphasis = emphasisLevels.high) {
-                    Text(text ="${place.priceForNight.toInt()}/night" , style = MaterialTheme.typography.subtitle2 )
+                    Text(text ="$${place.priceForNight.toInt()}/night" , style = MaterialTheme.typography.subtitle2 )
                 }
             }
         }
