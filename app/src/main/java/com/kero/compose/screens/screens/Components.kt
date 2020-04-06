@@ -23,10 +23,10 @@ import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 
 @Composable
-fun topActionBar(modifier: Modifier = Modifier.None, onMenuClicked:()->Unit = {}, navigationIcon: VectorAsset,onNotificationClicked:()->Unit= {}){
+fun topActionBar(modifier: Modifier = Modifier.None, onNavigationIconClicked:()->Unit = {}, navigationIcon: VectorAsset,onNotificationClicked:()->Unit= {}){
     Surface(modifier = modifier.preferredHeight( 56.dp)) {
         Row(modifier = Modifier.fillMaxHeight().fillMaxWidth()) {
-            IconButton(  onClick = onMenuClicked) {
+            IconButton(  onClick = onNavigationIconClicked) {
                 Icon(asset = navigationIcon , tint = Color.Black)
             }
             Spacer(modifier = Modifier.weight(1f))

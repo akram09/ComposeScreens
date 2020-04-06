@@ -2,6 +2,7 @@ package com.kero.compose.screens
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.compose.state
 import androidx.ui.animation.Crossfade
 import androidx.ui.core.setContent
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        
         if (AppStatus.currentScreen is Screen.PlaceDetailScreen){
             navigateTo(Screen.DashboardScreen)
         }else{

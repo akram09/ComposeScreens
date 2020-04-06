@@ -25,7 +25,7 @@ import com.kero.jetpack.compose.playground.R
 @Composable
 fun PlaceDetail(place: Place){
     AppTheme {
-        Scaffold(topAppBar = { topActionBar(navigationIcon = Icons.Filled.ArrowBack)} , floatingActionButton = {
+        Scaffold(topAppBar = { topActionBar(navigationIcon = Icons.Filled.ArrowBack , onNavigationIconClicked = { navigateTo(Screen.DashboardScreen)})} , floatingActionButton = {
             FloatingActionButton(onClick = {} , backgroundColor = Color.Black) {
                 Icon(asset = Icons.Filled.Flight , tint = Color.White)
             }
