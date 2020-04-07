@@ -1,33 +1,21 @@
 package com.kero.compose.screens
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.compose.state
 import androidx.ui.animation.Crossfade
 import androidx.ui.core.setContent
-import com.kero.compose.screens.screens.*
+import com.kero.compose.screens.screens.travelapp.*
+import com.kero.jetpack.compose.playground.R
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent{
-            Crossfade(current =AppStatus.currentScreen ) {
-                when(it){
-                    is Screen.DashboardScreen -> Dashboard(places = getPlaces(resources))
-                    is Screen.PlaceDetailScreen -> PlaceDetail(place = it.place)
-                }
-            }
-        }
+        setContentView(R.layout.activity_main)
+        startActivity(Intent(this , TravelActivity::class.java))
+        finish()
     }
 
-    override fun onBackPressed() {
 
-        if (AppStatus.currentScreen is Screen.PlaceDetailScreen){
-            navigateTo(Screen.DashboardScreen)
-        }else{
-            finish()
-        }
-    }
 }

@@ -1,4 +1,4 @@
-package com.kero.compose.screens.screens
+package com.kero.compose.screens.screens.travelapp
 
 import androidx.compose.Composable
 import androidx.compose.state
@@ -11,8 +11,6 @@ import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.*
-import androidx.ui.material.icons.outlined.Menu
-import androidx.ui.material.icons.outlined.Notifications
 import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
 import androidx.ui.unit.dp
@@ -21,9 +19,16 @@ import com.kero.jetpack.compose.playground.R
 
 @Composable
 fun Dashboard(places:List<Place> ){
-    AppTheme {
-        Scaffold(bottomAppBar = { bottomNavigation()} , topAppBar = { topActionBar(navigationIcon = Icons.Filled.Menu)}) {
-            MainContainer(places = places , modifier = it.padding(start = 20.dp))
+    MaterialTheme {
+        Scaffold(bottomAppBar = { bottomNavigation() } , topAppBar = {
+            topActionBar(
+                navigationIcon = Icons.Filled.Menu
+            )
+        }) {
+            MainContainer(
+                places = places,
+                modifier = it.padding(start = 20.dp)
+            )
         }
 
     }
@@ -37,7 +42,7 @@ fun MainContainer(modifier: Modifier= Modifier.None , places: List<Place> ){
         Column() {
             SearchPlace()
             Spacer(modifier = Modifier.preferredHeight(20.dp))
-            PlacesCards(places = places )
+            PlacesCards(places = places)
             Spacer(modifier = Modifier.preferredHeight(10.dp))
             PlacesList(places = places)
         }
@@ -70,9 +75,13 @@ fun PlacesList(places: List<Place>, modifier: Modifier = Modifier.None ){
 }
 
 @Composable
-fun PlaceItem(modifier: Modifier= Modifier.None , place:Place){
+fun PlaceItem(modifier: Modifier= Modifier.None , place: Place){
     Clickable(onClick = {
-        navigateTo(Screen.PlaceDetailScreen(place))
+        navigateTo(
+            Screen.PlaceDetailScreen(
+                place
+            )
+        )
     } , modifier = modifier.fillMaxWidth().padding(bottom = 10.dp).ripple()) {
         Row() {
             val imageModifier = Modifier.preferredSize(70.dp).clip(RoundedCornerShape(6.dp))
@@ -103,7 +112,10 @@ fun PlacesCards(modifier: Modifier= Modifier.None, places:List<Place> ){
     HorizontalScroller(modifier = Modifier.padding(top = 10.dp , bottom = 10.dp)) {
         Row(modifier = modifier) {
             places.forEach {
-                TravelPlaceCard(place = it , modifier = Modifier.padding(end = 10.dp))
+                TravelPlaceCard(
+                    place = it,
+                    modifier = Modifier.padding(end = 10.dp)
+                )
             }
         }
     }
@@ -115,8 +127,14 @@ fun PlacesCards(modifier: Modifier= Modifier.None, places:List<Place> ){
 
 
 @Composable
-fun TravelPlaceCard(place:Place ,  modifier: Modifier = Modifier.None){
-    Clickable(onClick = { navigateTo(Screen.PlaceDetailScreen(place))} , modifier = modifier.preferredWidthIn(maxWidth = 150.dp).ripple()) {
+fun TravelPlaceCard(place: Place, modifier: Modifier = Modifier.None){
+    Clickable(onClick = {
+        navigateTo(
+            Screen.PlaceDetailScreen(
+                place
+            )
+        )
+    } , modifier = modifier.preferredWidthIn(maxWidth = 150.dp).ripple()) {
         Column (){
             val imageModifier = Modifier.preferredHeight(180.dp).preferredWidth(150.dp).clip(RoundedCornerShape(12.dp))
             Image(asset = place.image , modifier = imageModifier , scaleFit = Crop)
