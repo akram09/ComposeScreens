@@ -12,7 +12,6 @@ class BudgetTrackerActivity:AppCompatActivity(){
         setContent {
             AppTheme {
 
-                Text(text = "Hello World !!!", style = MaterialTheme.typography.h6)
             }
         }
     }
