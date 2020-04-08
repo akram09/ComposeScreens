@@ -14,6 +14,7 @@ import androidx.ui.material.Surface
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.outlined.Notifications
 import androidx.ui.unit.dp
+import com.kero.compose.screens.utils.BadgeIcon
 
 @Composable
 fun topActionBar(modifier: Modifier = Modifier.None, onNavigationIconClicked:()->Unit = {}, navigationIcon: VectorAsset,onNotificationClicked:()->Unit= {}){
@@ -31,12 +32,5 @@ fun topActionBar(modifier: Modifier = Modifier.None, onNavigationIconClicked:()-
             }
 
         }
-    }
-}
-@Composable
-fun BadgeIcon(icon:VectorAsset , tint:Color , modifier: Modifier= Modifier.None){
-    Stack(modifier = modifier) {
-        Icon(asset = icon , tint = tint)
-        Box(shape = CircleShape  , backgroundColor = Color.Red , modifier = Modifier.preferredSize(12.dp).gravity(Alignment.TopEnd))
     }
 }
