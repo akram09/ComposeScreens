@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.kero.compose.screens.screens.travelapp.TravelActivity" />
+        <activity android:name="com.kero.compose.screens.screens.budgettracker.BudgetTrackerActivity" />
     </application>
 
 </manifest>

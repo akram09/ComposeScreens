@@ -19,7 +19,10 @@ import com.kero.jetpack.compose.playground.R
 
 @Composable
 fun Dashboard(places:List<Place> ){
-    MaterialTheme {
+    MaterialTheme(colors =  lightColorPalette(primary = Color
+        .White ,
+        onPrimary = Color(0xFF7F949F),
+        secondary = Color(0xFFC20029))) {
         Scaffold(bottomAppBar = { bottomNavigation() } , topAppBar = {
             topActionBar(
                 navigationIcon = Icons.Filled.Menu

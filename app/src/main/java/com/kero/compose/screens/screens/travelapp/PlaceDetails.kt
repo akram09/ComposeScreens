@@ -15,7 +15,10 @@ import com.kero.compose.screens.base.Crop
 
 @Composable
 fun PlaceDetail(place: Place){
-    MaterialTheme {
+    MaterialTheme(colors =  lightColorPalette(primary = Color
+        .White ,
+        onPrimary = Color(0xFF7F949F),
+        secondary = Color(0xFFC20029))) {
         Scaffold(topAppBar = {
             topActionBar(
                 navigationIcon = Icons.Filled.ArrowBack,
