@@ -1,1 +1,0 @@
-/home/akram09/Desktop/ComposeScreens/buildSrc/build/classes/kotlin/main/Versions$Gradle.class:/home/akram09/Desktop/ComposeScreens/buildSrc/build/classes/kotlin/main/Versions$Kotlin.class:/home/akram09/Desktop/ComposeScreens/buildSrc/build/classes/kotlin/main/Versions.class
