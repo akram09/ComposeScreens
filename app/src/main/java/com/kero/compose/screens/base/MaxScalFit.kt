@@ -2,8 +2,7 @@ package com.kero.compose.screens.base
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.ui.graphics.ScaleFit
-import androidx.ui.unit.PxSize
+
 import java.lang.Float.max
 
 val Crop = object: ScaleFit {

@@ -3,22 +3,17 @@
 buildscript {
 
     repositories {
-        google()
-        jcenter()
-        maven ( url ="https://dl.bintray.com/kotlin/kotlin-eap" )
-        
+        addRepositories()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.2.0-alpha03")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72")
+        classpath(Plugins.gradlePlugin)
+        classpath(Plugins.kotlinPlugin)
     }
 }
 
 allprojects {
     repositories {
-        google()
-        jcenter()
-        maven ( url ="https://dl.bintray.com/kotlin/kotlin-eap" )
+        addRepositories()
     }
 }
 
