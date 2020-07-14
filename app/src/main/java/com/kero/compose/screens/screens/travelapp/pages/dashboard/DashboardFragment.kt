@@ -7,15 +7,21 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
 import android.widget.FrameLayout
 import androidx.compose.Recomposer
+import androidx.compose.getValue
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.ui.core.setContent
+import androidx.ui.livedata.observeAsState
 
 class DashboardFragment: Fragment() {
+
+    private val viewModel: DashboardViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel.init(resources)
         return FrameLayout(requireContext()).apply {
             layoutParams = LayoutParams(
                 LayoutParams(
@@ -24,7 +30,10 @@ class DashboardFragment: Fragment() {
                 )
             )
             setContent(Recomposer.current()){
-                Dashboard(places = )
+                val viewState by viewModel.state.observeAsState()
+                if(viewState!=null){
+                    Dashboard(viewState!!, viewModel::reducer)
+                }
             }
         }
     }

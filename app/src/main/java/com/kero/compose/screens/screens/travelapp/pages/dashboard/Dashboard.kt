@@ -16,12 +16,12 @@ import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
+import com.kero.compose.screens.R
 import com.kero.compose.screens.screens.travelapp.api.Place
 import com.kero.compose.screens.screens.travelapp.components.topActionBar
-import com.kero.jetpack.compose.playground.R
 
 @Composable
-fun Dashboard(places:List<Place> ){
+fun Dashboard(state: DashboardState, reducer:(DashboardAction)->Unit ){
     MaterialTheme(colors =  lightColorPalette(primary = Color
         .White ,
         onPrimary = Color(0xFF7F949F),
@@ -35,7 +35,8 @@ fun Dashboard(places:List<Place> ){
             }
         ){
             MainContainer(
-                places = places
+                places = state.places
+            , reducer = reducer
             )
         }
     }
@@ -44,17 +45,19 @@ fun Dashboard(places:List<Place> ){
 
 
 @Composable
-fun MainContainer(modifier: Modifier= Modifier.None , places: List<Place> ){
+fun MainContainer(modifier: Modifier= Modifier.None , places: List<Place> , reducer: (DashboardAction) -> Unit){
     VerticalScroller(modifier = modifier) {
         Column() {
             SearchPlace()
             Spacer(modifier = Modifier.preferredHeight(20.dp))
             PlacesCards(
-                places = places
+                places = places,
+                reducer = reducer
             )
             Spacer(modifier = Modifier.preferredHeight(10.dp))
             PlacesList(
-                places = places
+                places = places,
+                reducer = reducer
             )
         }
     }
@@ -76,19 +79,19 @@ fun SearchPlace(modifier: Modifier= Modifier.None){
     }
 }
 @Composable
-fun PlacesList(places: List<Place>, modifier: Modifier = Modifier.None ){
+fun PlacesList(places: List<Place>, modifier: Modifier = Modifier.None, reducer: (DashboardAction) -> Unit ){
     Column(modifier = modifier) {
         places.forEach {
-            PlaceItem(place = it)
+            PlaceItem(place = it, reducer = reducer)
         }
     }
 
 }
 
 @Composable
-fun PlaceItem(modifier: Modifier= Modifier.None , place: Place){
+fun PlaceItem(modifier: Modifier= Modifier.None , place: Place, reducer: (DashboardAction) -> Unit){
     Clickable(onClick = {
-        // navigation
+        reducer(GoToPlaceDetail(place))
     } , modifier = modifier.fillMaxWidth().padding(bottom = 10.dp).ripple()) {
         Row() {
             val imageModifier = Modifier.preferredSize(70.dp).clip(RoundedCornerShape(6.dp))
@@ -115,13 +118,14 @@ fun PlaceItem(modifier: Modifier= Modifier.None , place: Place){
 
 
 @Composable
-fun PlacesCards(modifier: Modifier= Modifier.None, places:List<Place> ){
+fun PlacesCards(modifier: Modifier= Modifier.None, places:List<Place> , reducer: (DashboardAction) -> Unit){
     HorizontalScroller(modifier = Modifier.padding(top = 10.dp , bottom = 10.dp)) {
         Row(modifier = modifier) {
             places.forEach {
                 TravelPlaceCard(
                     place = it,
                     modifier = Modifier.padding(end = 10.dp)
+                , reducer = reducer
                 )
             }
         }
@@ -134,9 +138,9 @@ fun PlacesCards(modifier: Modifier= Modifier.None, places:List<Place> ){
 
 
 @Composable
-fun TravelPlaceCard(place: Place, modifier: Modifier = Modifier.None){
+fun TravelPlaceCard(place: Place, modifier: Modifier = Modifier.None, reducer: (DashboardAction) -> Unit){
     Clickable(onClick = {
-        // navigation
+        reducer(GoToPlaceDetail(place))
     } , modifier = modifier.preferredWidthIn(maxWidth = 150.dp).ripple()) {
         Column (){
             val imageModifier = Modifier.preferredHeight(180.dp).preferredWidth(150.dp).clip(RoundedCornerShape(12.dp))
