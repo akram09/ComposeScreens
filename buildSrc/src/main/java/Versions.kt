@@ -7,4 +7,5 @@ object Versions{
     const val appCompat = "1.1.0"
     const val compose = "0.1.0-dev14"
     const val coroutine = "1.3.7"
+    const val navigation = "2.3.0"
 }

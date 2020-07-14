@@ -1,4 +1,4 @@
-package com.kero.compose.screens.screens.travelapp
+package com.kero.compose.screens.screens.travelapp.api
 
 import android.content.res.Resources
 import androidx.ui.graphics.ImageAsset
@@ -6,9 +6,9 @@ import androidx.ui.graphics.imageFromResource
 import com.kero.jetpack.compose.playground.R
 
 data class Place(val name:String, val location:String, val priceForNight:Double,
-                 val image :ImageAsset ,val detail:String="" )
+                 val image : ImageAsset, val detail:String="" )
 
-fun  getPlaces(resources:Resources) = listOf(
+fun  getPlaces(resources: Resources) = listOf(
     Place(
         "Tincidunt Pool",
         "Madrid, Spain",
@@ -91,6 +91,4 @@ fun  getPlaces(resources:Resources) = listOf(
                 "Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. " +
                 "Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui."
     )
-
 )
-

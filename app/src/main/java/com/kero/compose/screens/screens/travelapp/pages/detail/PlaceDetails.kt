@@ -1,6 +1,7 @@
-package com.kero.compose.screens.screens.travelapp
+package com.kero.compose.screens.screens.travelapp.pages.detail
 
 import androidx.compose.Composable
+import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.core.clip
 import androidx.ui.foundation.*
@@ -11,7 +12,8 @@ import androidx.ui.material.*
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.*
 import androidx.ui.unit.dp
-import com.kero.compose.screens.base.Crop
+import com.kero.compose.screens.screens.travelapp.api.Place
+import com.kero.compose.screens.screens.travelapp.components.topActionBar
 
 @Composable
 fun PlaceDetail(place: Place){
@@ -19,24 +21,19 @@ fun PlaceDetail(place: Place){
         .White ,
         onPrimary = Color(0xFF7F949F),
         secondary = Color(0xFFC20029))) {
-        Scaffold(topAppBar = {
+        Scaffold(topBar = {
             topActionBar(
                 navigationIcon = Icons.Filled.ArrowBack,
                 onNavigationIconClicked = {
-                    navigateTo(
-                        Screen.DashboardScreen
-                    )
+                    // navigate back
                 })
         } , floatingActionButton = {
             FloatingActionButton(onClick = {} , backgroundColor = Color.Black) {
-                Icon(asset = Icons.Filled.Flight , tint = Color.White)
+                Icon(asset = Icons.Filled.Favorite , tint = Color.White)
             }
         }) {
             mainContainer(
-                it.padding(
-                    start = 20.dp,
-                    end = 20.dp
-                ), place
+                place = place
             )
         }
     }
@@ -47,7 +44,7 @@ fun mainContainer(modifier: Modifier = Modifier.None,place: Place){
         VerticalScroller(modifier = Modifier.fillMaxSize()) {
             Column() {
                 Box(modifier = Modifier.fillMaxWidth().preferredHeight(250.dp)){
-                    Image(asset = place.image , scaleFit = Crop, modifier = Modifier.fillMaxSize().clip(
+                    Image(asset = place.image , contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize().clip(
                         RoundedCornerShape(10.dp)))
                 }
                 Spacer(modifier = Modifier.preferredHeight(20.dp))
@@ -73,11 +70,11 @@ fun PlaceDetailHeader(modifier: Modifier = Modifier.None , placeTitle :String , 
         Row() {
             Text(text = placeTitle , style = MaterialTheme.typography.h6 )
             Spacer(modifier = Modifier.weight(1f))
-            Icon(asset = Icons.Filled.Bookmark , modifier =Modifier.padding(end = 20.dp) , tint = Color.Black)
+            Icon(asset = Icons.Filled.Add , modifier =Modifier.padding(end = 20.dp) , tint = Color.Black)
         }
         Spacer(modifier = Modifier.preferredHeight(10.dp))
         Row() {
-            Icon(asset = Icons.Filled.Room)
+            Icon(asset = Icons.Filled.Create)
             Spacer(modifier = Modifier.preferredWidth(2.dp))
             ProvideEmphasis(emphasis = emphasisLevels.medium) {
                 Text(text = placeLocation , style = MaterialTheme.typography.subtitle1)

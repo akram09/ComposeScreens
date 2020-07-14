@@ -3,6 +3,7 @@ object Dependencies{
         const val compiler = "androidx.compose:compose-compiler:${Versions.compose}"
         const val runtime = "androidx.compose:compose-runtime:${Versions.compose}"
         const val core = "androidx.ui:ui-core:${Versions.compose}"
+        const val graphics  = "androidx.ui:ui-graphics:${Versions.compose}"
         const val foundation ="androidx.ui:ui-foundation:${Versions.compose}"
         const val tooling = "androidx.ui:ui-tooling:${Versions.compose}"
         const val layout  = "androidx.ui:ui-layout:${Versions.compose}"
@@ -21,5 +22,7 @@ object Dependencies{
         const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
         const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+        const val navigation="androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+        const val navigation_ktx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     }
 }
