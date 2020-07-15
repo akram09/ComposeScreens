@@ -10,7 +10,6 @@ import androidx.ui.text.font.Font
 import androidx.ui.text.font.FontFamily
 import androidx.ui.text.font.font
 import androidx.ui.text.font.fontFamily
-import androidx.ui.text.typefaceFromFontFamily
 import com.kero.jetpack.compose.playground.R
 
 
