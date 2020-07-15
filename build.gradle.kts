@@ -2,6 +2,7 @@
 plugins{
     id("io.gitlab.arturbosch.detekt") version Versions.detekt
     id("org.jlleitschuh.gradle.ktlint") version Versions.KtlintPlugin
+    id("org.jlleitschuh.gradle.ktlint-idea") version Versions.KtlintPlugin
 }
 buildscript {
 
