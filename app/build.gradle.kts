@@ -25,7 +25,7 @@ android {
     }
     composeOptions {
 
-        // uncomment this if problems kotlinCompilerVersion= "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
+        kotlinCompilerVersion= "1.4.0-dev-withExperimentalGoogleExtensions-20200720"
         kotlinCompilerExtensionVersion=Versions.compose
     }
 
@@ -42,7 +42,19 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Dependencies.kotlinStdlib)
+    // compose dependencies
+    implementation(Dependencies.Compose.runtime_dispatch)
     implementation(Dependencies.Compose.runtime)
+    implementation(Dependencies.Compose.animation)
+    implementation(Dependencies.Compose.animation_core)
+    implementation(Dependencies.Compose.geometry)
+    implementation(Dependencies.Compose.material_icons)
+    implementation(Dependencies.Compose.material_icons_extended)
+    implementation(Dependencies.Compose.text_android)
+    implementation(Dependencies.Compose.text_core)
+    implementation(Dependencies.Compose.text_foundation)
+    implementation(Dependencies.Compose.unit)
+    implementation(Dependencies.Compose.util)
     implementation(Dependencies.Compose.core)
     implementation(Dependencies.Compose.foundation)
     implementation(Dependencies.Compose.layout)
@@ -52,6 +64,8 @@ dependencies {
     implementation(Dependencies.Compose.savedInstance)
     implementation(Dependencies.Compose.tooling)
     implementation(Dependencies.Compose.compiler)
+
+    // jetpack dependencies
     implementation(Dependencies.Jetpack.navigation)
     implementation(Dependencies.Jetpack.navigation_ktx)
     implementation(Dependencies.Jetpack.appCompat)

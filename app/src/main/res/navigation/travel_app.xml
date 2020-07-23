@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/travel_app">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/travel_app"
+    app:startDestination="@id/dashboardFragment">
 
 
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.kero.compose.screens.screens.travelapp.pages.dashboard.DashboardFragment"
+        android:label="DashboardFragment" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_placeDetailFragment"
+            app:destination="@id/placeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeDetailFragment"
+        android:name="com.kero.compose.screens.screens.travelapp.pages.detail.PlaceDetailFragment"
+        android:label="PlaceDetailFragment" />
 </navigation>

@@ -15,7 +15,7 @@ fun RepositoryHandler.addRepositories(){
     jcenter()
     mavenLocal()
     mavenCentral()
-    maven( url="https://dl.bintray.com/arrow-kt/arrow-kt/" )
+    maven(url = "https://dl.bintray.com/kotlin/kotlin-eap/")
     maven(url = "https://jitpack.io" )
     maven( url ="https://dl.bintray.com/kotlin/kotlinx" )
 }

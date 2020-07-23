@@ -10,8 +10,7 @@ import androidx.ui.text.font.Font
 import androidx.ui.text.font.FontFamily
 import androidx.ui.text.font.font
 import androidx.ui.text.font.fontFamily
-import com.kero.jetpack.compose.playground.R
-
+import com.kero.compose.screens.R
 
 @Composable
 fun AppTheme(children: @Composable()()-> Unit){
