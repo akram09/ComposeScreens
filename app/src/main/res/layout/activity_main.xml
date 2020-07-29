@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.kero.compose.screens.MainActivity">
 
-    <fragment
-        android:layout_width="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/travel_app"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_height="match_parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

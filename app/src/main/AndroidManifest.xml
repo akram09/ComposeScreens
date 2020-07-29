@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.kero.compose.screens.screens.travelapp.TravelActivity" />
+        <activity android:name=".screens.walletApp.WalletActivity" />
         <activity android:name="com.kero.compose.screens.screens.budgettracker.BudgetTrackerActivity" />
     </application>
 

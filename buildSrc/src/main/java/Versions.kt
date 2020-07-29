@@ -1,10 +1,9 @@
 object Versions{
 
-    const val AGP  = "4.2.0-alpha03"
     const val KtlintPlugin = "9.2.1"
     const val KTLINT = "0.37.2"
-    const val gradlePlugin = "4.2.0-alpha03"
-    const val kotlin = "1.4-M3"
+    const val gradlePlugin = "4.2.0-alpha06"
+    const val kotlin = "1.4.0-rc"
     const val lifecycle = "2.2.0"
     const val constraintLayout = "1.1.3"
     const val appCompat = "1.1.0"

@@ -23,16 +23,21 @@ object Dependencies{
         const val liveData = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
     }
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-    const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+    const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     object Coroutine{
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
     }
     object Jetpack{
         const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
         const val core_ktx  = "androidx.core:core-ktx:${Versions.appCompat}"
+
+        const val commonJava8 = "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle}"
+        const val lifecycleCommon = "androidx.lifecycle:lifecycle-common:${Versions.lifecycle}"
+        const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle}"
         const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
         const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+
         const val navigation="androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
         const val navigation_ktx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     }

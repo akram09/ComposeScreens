@@ -24,7 +24,6 @@ android {
         compose= true
     }
     composeOptions {
-
         kotlinCompilerVersion= "1.4.0-dev-withExperimentalGoogleExtensions-20200720"
         kotlinCompilerExtensionVersion=Versions.compose
     }
@@ -37,10 +36,15 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
+        kotlinOptions {
+            jvmTarget = "1.8"
+            freeCompilerArgs = freeCompilerArgs.toMutableList() + listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check")
+        }
+    }
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Dependencies.kotlinStdlib)
     // compose dependencies
     implementation(Dependencies.Compose.runtime_dispatch)
@@ -72,6 +76,9 @@ dependencies {
     implementation(Dependencies.Jetpack.core_ktx)
     implementation(Dependencies.Jetpack.extensions)
     implementation(Dependencies.Jetpack.extensions)
+    implementation(Dependencies.Jetpack.lifecycleCommon)
+    implementation(Dependencies.Jetpack.lifecycleRuntime)
+    implementation(Dependencies.Jetpack.commonJava8)
     implementation(Dependencies.Jetpack.liveData)
     implementation(Dependencies.Jetpack.viewModel)
     implementation(Dependencies.constraintLayout)
